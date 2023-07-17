@@ -3,7 +3,7 @@
 # Основной цикл программы
 while true; do
     # Выводим меню выбора
-    echo "Выберите действие:"
+    echo "Select an option:"
     echo "1. Show username"
     echo "2. Show IP address"
     echo "3. Show default gateway"
