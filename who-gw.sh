@@ -1,14 +1,43 @@
 #!/bin/bash
 
-# Делаем вывод юзера через переменную командой whoami
-username=$(whoami)
-echo "User: $username"
+# Основной цикл программы
+while true; do
+    # Выводим меню выбора
+    echo "Выберите действие:"
+    echo "1. Show username"
+    echo "2. Show IP address"
+    echo "3. Show default gateway"
+    echo "4. Exit"
 
-# Вызывает команду ip a с сортировкой на локальный айпи адрес.
-ip=$(ip a | grep 'inet ' | awk '{print $2}' | sed -n '2p')
-echo "IP address: $ip"
+    # Считываем выбор пользователя
+    read selection
 
-# Выводит шлюз по умолчанию через ip route и вырезкой через awk нужного столбца
-gateway=$(ip route | awk '/default/ { print $3 }')
-echo "Gateway: $gateway"
+    # Обрабатываем выбор
+    case $selection in
+        1)
+            # Показываем имя пользователя
+            username=$(whoami)
+            echo "User: $username"
+            ;;
+        2)
+            # Показываем IP-адрес
+            ip=$(ip a | grep 'inet ' | awk '{print $2}' | sed -n '2p')
+            echo "IP address: $ip"
+            ;;
+        3)
+            # Показываем шлюз по умолчанию
+            gateway=$(ip route | awk '/default/ { print $3 }')
+            echo "Gateway: $gateway"
+            ;;
+        4)
+            # Выходим из цикла
+            break
+            ;;
+        *)
+            # Некорректный выбор
+            echo "Error: incorrect selection"
+            ;;
+    esac
+done
 
+exit 0
