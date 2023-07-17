@@ -24,5 +24,5 @@ sudo chmod +x who-gw.sh
 
 ## Автор
 
-Этот скрипт был создан [kliganN](https://github.com/kligann).
+[kliganN](https://github.com/kligann)
 
